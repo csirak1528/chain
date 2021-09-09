@@ -15,12 +15,14 @@ typedef struct TOKEN_STRUCT
         TOKEN_RCURL,
         TOKEN_SEMICOLON,
         TOKEN_COLON,
-        TOKEN_QOUTE,
+        TOKEN_QUOTE,
         TOKEN_EQUALS,
+        TOKEN_LT,
+        TOKEN_GT,
+
         TOKEN_EOF
     } type;
 } token_C;
 
-token_C* init_token(char* val, int type);
+token_C *init_token(char *val, int type);
 #endif
-

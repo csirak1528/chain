@@ -1,3 +1,4 @@
-func main( i:int ){
+func main ( i : int ){
     print("hello world");
+
 }

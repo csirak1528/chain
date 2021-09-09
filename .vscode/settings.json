@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "*.jsx": "javascriptreact",
+        "*.l": "lex",
+        "bit": "c",
+        "compare": "c",
+        "cstddef": "c",
+        "string": "c",
+        "optional": "c",
+        "limits": "c",
+        "memory": "c",
+        "new": "c",
+        "ranges": "c",
+        "functional": "c",
+        "stdlib.h": "c",
+        "io.h": "c"
+    }
+}

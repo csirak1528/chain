@@ -1,0 +1,1 @@
+char *read_file_data(const char *src);
