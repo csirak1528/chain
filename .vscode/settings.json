@@ -13,6 +13,12 @@
         "ranges": "c",
         "functional": "c",
         "stdlib.h": "c",
-        "io.h": "c"
+        "io.h": "c",
+        "ctype.h": "c",
+        "parser.h": "c",
+        "token.h": "c",
+        "ast.h": "c",
+        "list.h": "c",
+        "types.h": "c"
     }
 }

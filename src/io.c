@@ -4,7 +4,6 @@
 
 char *read_file_data(char const *path)
 {
-    printf("%s \n",path);
     char *buffer = "";
     long length=0;
     FILE *f = fopen(path, "r"); //was "rb"

@@ -1,4 +1,5 @@
 #include "include/lexer.h"
+#include "include/token.h"
 #include "include/macros.h"
 #include <string.h>
 #include <stdlib.h>
@@ -56,11 +57,18 @@ token_C *lexer_parse_id(lexer_C *lexer)
 {
     char *value = calloc(1, sizeof(char));
 
-    while (isalpha(lexer->c))
+    while (isalnum(lexer->c))
     {
         value = realloc(value, (strlen(value) + 2) * sizeof(char));
         strcat(value, (char[]){lexer->c, 0});
-        lexer_advance(lexer);
+        if (isalnum(lexer->src[lexer->i + 1]))
+        {
+            lexer_advance(lexer);
+        }
+        else
+        {
+            break;
+        }
     }
     return init_token(value, TOKEN_ID);
 }
@@ -83,9 +91,13 @@ token_C *lexer_next_token(lexer_C *lexer)
     while (lexer->c != '\0')
     {
         lexer_skip_white_space(lexer);
-        if (isalpha(lexer->c))
+        if (isalnum(lexer->c))
         {
             return lexer_advance_with(lexer, lexer_parse_id(lexer));
+        }
+        if (isnumber(lexer->c))
+        {
+            return lexer_advance_with(lexer, lexer_parse_num(lexer));
         }
         switch (lexer->c)
         {
@@ -95,6 +107,10 @@ token_C *lexer_next_token(lexer_C *lexer)
             return lexer_advance_current(lexer, TOKEN_LPAREN);
         case ')':
             return lexer_advance_current(lexer, TOKEN_RPAREN);
+        case '[':
+            return lexer_advance_current(lexer, TOKEN_LBRACKET);
+        case ']':
+            return lexer_advance_current(lexer, TOKEN_RBRACKET);
         case ',':
             return lexer_advance_current(lexer, TOKEN_COMMA);
         case '{':
@@ -115,6 +131,7 @@ token_C *lexer_next_token(lexer_C *lexer)
             break;
         default:
             printf("[Lexer]: Unexpected Characer: `%c` \n", lexer->c);
+            lexer_advance(lexer);
         }
     }
     return init_token(0, TOKEN_EOF);

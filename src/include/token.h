@@ -10,6 +10,8 @@ typedef struct TOKEN_STRUCT
         TOKEN_INT,
         TOKEN_LPAREN,
         TOKEN_RPAREN,
+        TOKEN_LBRACKET,
+        TOKEN_RBRACKET,
         TOKEN_COMMA,
         TOKEN_LCURL,
         TOKEN_RCURL,
@@ -19,10 +21,11 @@ typedef struct TOKEN_STRUCT
         TOKEN_EQUALS,
         TOKEN_LT,
         TOKEN_GT,
-
         TOKEN_EOF
     } type;
 } token_C;
 
 token_C *init_token(char *val, int type);
+
+char *token_to_str(int type);
 #endif

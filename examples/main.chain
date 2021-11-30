@@ -1,4 +1,4 @@
-func main ( i : int ){
-    print("hello world");
-
+func main = ( i : int, ar:str[] ):int[]{
+    return(0);
 }
+

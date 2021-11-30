@@ -1,7 +1,7 @@
 exec = chain
 sources = $(wildcard src/*.c)
 objects = $(sources:.c=.o)
-flags = -g -Wall -lm -ldl -fPIC -rdynamic
+flags = -g -Wall -lm -ldl -fPIC -rdynamic 
 
 $(exec): $(objects)
 	gcc $(objects) $(flags) -o $(exec)
@@ -16,4 +16,4 @@ clean:
 	-rm src/*.o
 
 lint:
-	clang-tidy src/*.c src/include/*.h
+	gcc-tidy src/*.c src/include/*.h
